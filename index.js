@@ -4,7 +4,7 @@ function upload() {
   const fileInput = document.getElementById('bg-img-remov-input');
   const image = fileInput.files[0];
 
-  const orignalImage = document.getElementById('orignal-image');
+  const orignalImage = document.getElementById('original-image');
   const orignalImageContainer = document.createElement('div');
   orignalImageContainer.classList = 'card';
   imageURL = URL.createObjectURL(image);
@@ -15,8 +15,6 @@ function upload() {
   orignalImageContainer.appendChild(img);
   orignalImage.appendChild(orignalImageContainer);
 }
-
-upload();
 
 function submithandler() {
   const fileInput = document.getElementById('bg-img-remov-input');
@@ -48,14 +46,26 @@ function submithandler() {
     })
     .catch();
 }
-submithandler();
 
-function downloadhandler() {
-  const anchorElement = document.createElement('a');
-  anchorElement.href = imageURL;
-  anchorElement.download = 'mrkamin.png';
-  document.body.appendChild(anchorElement);
-  anchorElement.click();
-  document.body.removeChild(anchorElement);
+function clearData() {
+  // Clear the original image container
+  const originalImage = document.getElementById('original-image');
+  console.log(originalImage);
+  originalImage.innerHTML = '';
+  const editedImage = document.querySelector('.image-withou-bg');
+  console.log(editedImage);
+  editedImage.innerHTML = '';
 }
-downloadhandler();
+function downloadhandler() {
+  if (imageURL) {
+    const anchorElement = document.createElement('a');
+    anchorElement.href = imageURL;
+    anchorElement.download = 'mrkamin.png';
+    document.body.appendChild(anchorElement);
+    anchorElement.click();
+    document.body.removeChild(anchorElement);
+
+    // Clear the data from the DOM
+    clearData();
+  }
+}
