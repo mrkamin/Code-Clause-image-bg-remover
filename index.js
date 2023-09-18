@@ -27,7 +27,7 @@ Submit.addEventListener('click', () => {
   formData.append('image_file', image);
   formData.append('size', 'auto');
 
-  const apiKey = 'VAVAabKLAWxxce63bW5NXyLd';
+  const apiKey = 'YVi8LToiXwGNUrsLW1yZ5BVU';
 
   fetch('https://api.remove.bg/v1.0/removebg', {
     method: 'POST',

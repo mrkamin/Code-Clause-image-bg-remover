@@ -7,3 +7,23 @@
 body {
   font-family: 'Lato', sans-serif;
 }
+
+@media screen and (max-width: 786px) {
+  .image-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .orignal-image {
+    width: 100% !important;
+  }
+
+  .image-withou-bg {
+    width: 100% !important;
+  }
+
+  .btn {
+    width: 100% !important;
+  }
+}
