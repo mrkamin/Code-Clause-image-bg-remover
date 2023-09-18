@@ -1,6 +1,13 @@
 import { Upload, Submit, Download } from './modules/variables.js';
 
 let imageURL;
+let submitCount = 0; // Initialize a submit count variable
+const apiKeys = [
+  'YVi8LToiXwGNUrsLW1yZ5BVU',
+  'VAVAabKLAWxxce63bW5NXyLd',
+  'hMLL33KwE1xrDrHDx8k4hD4a',
+  '53TQDkpSYnuQMR7Y6PXR5Bhv',
+];
 
 Upload.addEventListener('click', () => {
   const fileInput = document.getElementById('bg-img-remov-input');
@@ -27,7 +34,8 @@ Submit.addEventListener('click', () => {
   formData.append('image_file', image);
   formData.append('size', 'auto');
 
-  const apiKey = 'YVi8LToiXwGNUrsLW1yZ5BVU';
+  const apiKey = apiKeys[submitCount % apiKeys.length];
+  submitCount++; // Increment the submit count
 
   fetch('https://api.remove.bg/v1.0/removebg', {
     method: 'POST',
