@@ -1,6 +1,8 @@
+import { Upload, Submit, Download } from './modules/variables.js';
+
 let imageURL;
 
-function upload() {
+Upload.addEventListener('click', () => {
   const fileInput = document.getElementById('bg-img-remov-input');
   const image = fileInput.files[0];
 
@@ -14,9 +16,9 @@ function upload() {
   img.classList = 'img-thumbnail';
   orignalImageContainer.appendChild(img);
   orignalImage.appendChild(orignalImageContainer);
-}
+});
 
-function submithandler() {
+Submit.addEventListener('click', () => {
   const fileInput = document.getElementById('bg-img-remov-input');
 
   const image = fileInput.files[0];
@@ -44,19 +46,20 @@ function submithandler() {
       const imageWithoutBg = document.getElementById('image-withou-bg');
       imageWithoutBg.appendChild(img);
     })
-    .catch();
-}
+    .catch((error) => {
+      console.error(error); // Handle errors properly
+    });
+});
 
 function clearData() {
   // Clear the original image container
   const originalImage = document.getElementById('original-image');
-  console.log(originalImage);
   originalImage.innerHTML = '';
   const editedImage = document.querySelector('.image-withou-bg');
-  console.log(editedImage);
   editedImage.innerHTML = '';
 }
-function downloadhandler() {
+
+Download.addEventListener('click', () => {
   if (imageURL) {
     const anchorElement = document.createElement('a');
     anchorElement.href = imageURL;
@@ -68,4 +71,4 @@ function downloadhandler() {
     // Clear the data from the DOM
     clearData();
   }
-}
+});
